@@ -1,14 +1,15 @@
 package service;
 
-import com.example.dh.ClinicaOdontologica.dto.OdontologoDTO;
-import com.example.dh.ClinicaOdontologica.exception.BadRequestException;
-import com.example.dh.ClinicaOdontologica.exception.EntityNotFoundException;
-import com.example.dh.ClinicaOdontologica.model.Odontologo;
-import com.example.dh.ClinicaOdontologica.repository.IOdontologoRepository;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dto.OdontologoDTO;
+import exception.BadRequestException;
+import exception.EntityNotFoundException;
+import modelo.Odontologo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import repository.IOdontologoRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +19,9 @@ import java.util.Optional;
 public class OdontologoService {
 
     private IOdontologoRepository odontologoRepository;
-    ObjectMapper mapper; //necesario para la conversión de la entidad a DTO y viceversa.
+    ObjectMapper mapper;
 
-    @Autowired //la inyección de dependencias se hace por constructor porque es una mejor práctica que solo usar @Autowired.
+    @Autowired
     public OdontologoService(IOdontologoRepository odontologoRepository, ObjectMapper mapper) {
         this.odontologoRepository = odontologoRepository;
         this.mapper = mapper;
@@ -42,7 +43,7 @@ public class OdontologoService {
     }
 
     //3. Buscar un odontólogo por id.
-    public OdontologoDTO buscarOdontologoPorId(Long id) throws EntityNotFoundException{
+    public OdontologoDTO buscarOdontologoPorId(Long id) throws EntityNotFoundException {
         Optional<Odontologo> odontologo = odontologoRepository.findById(id);
         OdontologoDTO odontologoDTO = null;
         if(odontologo.isEmpty()){
@@ -54,9 +55,8 @@ public class OdontologoService {
         return odontologoDTO;
     }
 
-    //4. Obtener un listado de todos los odontólogos registrados en la DB.
     public List<OdontologoDTO> buscarTodosOdontologos() throws EntityNotFoundException {
-        //Uso list en vez de Set, porque de esta forma puedo mostrarlos en la pagina, ordenados por id mediante Sort.by
+
         List<Odontologo> odontologos = odontologoRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
         List<OdontologoDTO> odontologosDTO = new ArrayList<OdontologoDTO>();
         if(odontologos.isEmpty()) {
@@ -69,7 +69,6 @@ public class OdontologoService {
         return odontologosDTO;
     }
 
-    //5. Actualizar los datos de un odontólogo.
     public Odontologo actualizarOdontologo(Odontologo odontologo) throws EntityNotFoundException, BadRequestException{
         if(odontologo.getId() == null){
             throw new BadRequestException("Debe incluir el id del odontólogo para poder actualizarlo");
@@ -78,13 +77,11 @@ public class OdontologoService {
         return guardarOdontologo(odontologo);
     }
 
-    //6.Eliminar un odontólogo por id.
     public void eliminarOdontologoPorId(Long id) throws EntityNotFoundException{
         buscarOdontologoPorId(id);
         odontologoRepository.deleteById(id);
     }
 
-    //7.Eliminar todos los odontologos de la base de datos
     public void eliminarTodosOdontologos() throws EntityNotFoundException{
         buscarTodosOdontologos();
         odontologoRepository.deleteAll();

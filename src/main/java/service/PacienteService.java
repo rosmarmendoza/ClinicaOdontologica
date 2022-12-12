@@ -1,13 +1,14 @@
 package service;
 
-import com.example.dh.ClinicaOdontologica.dto.PacienteDTO;
-import com.example.dh.ClinicaOdontologica.exception.BadRequestException;
-import com.example.dh.ClinicaOdontologica.exception.EntityNotFoundException;
-import com.example.dh.ClinicaOdontologica.model.Paciente;
-import com.example.dh.ClinicaOdontologica.repository.IPacienteRepository;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dto.PacienteDTO;
+import exception.BadRequestException;
+import exception.EntityNotFoundException;
+import modelo.Paciente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import repository.IPacienteRepository;
 
 import java.util.HashSet;
 import java.util.List;
@@ -17,9 +18,9 @@ import java.util.Set;
 @Service
 public class PacienteService {
     private IPacienteRepository pacienteRepository;
-    ObjectMapper mapper;//necesario para la conversión de la entidad a DTO y viceversa.
+    ObjectMapper mapper;
 
-    @Autowired //la inyección de dependencias se hace por constructor porque es una mejor práctica que solo usar @Autowired.
+    @Autowired
     public PacienteService(IPacienteRepository pacienteRepository, ObjectMapper mapper) {
         this.pacienteRepository = pacienteRepository;
         this.mapper = mapper;
@@ -41,7 +42,7 @@ public class PacienteService {
     }
 
     //3. Buscar un paciente por id.
-    public PacienteDTO buscarPacientePorId(Long id) throws EntityNotFoundException{
+    public PacienteDTO buscarPacientePorId(Long id) throws EntityNotFoundException {
         Optional<Paciente> paciente = pacienteRepository.findById(id);
         PacienteDTO pacienteDTO = null;
         if(paciente.isEmpty()){

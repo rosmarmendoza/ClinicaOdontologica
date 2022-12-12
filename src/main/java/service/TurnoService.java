@@ -1,13 +1,13 @@
 package service;
 
-import com.example.dh.ClinicaOdontologica.dto.TurnoDTO;
-import com.example.dh.ClinicaOdontologica.exception.BadRequestException;
-import com.example.dh.ClinicaOdontologica.exception.EntityNotFoundException;
-import com.example.dh.ClinicaOdontologica.model.Turno;
-import com.example.dh.ClinicaOdontologica.repository.ITurnoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dto.TurnoDTO;
+import exception.BadRequestException;
+import exception.EntityNotFoundException;
+import modelo.Turno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import repository.ITurnoRepository;
 
 import java.util.HashSet;
 import java.util.List;
@@ -20,8 +20,8 @@ public class TurnoService {
    private ITurnoRepository turnoRepository;
    OdontologoService odontologoService;
    PacienteService pacienteService;
-    ObjectMapper mapper; //necesario para la conversión de la entidad a DTO y viceversa.
-    @Autowired //la inyección de dependencias se hace por constructor porque es una mejor práctica que solo usar @Autowired.
+    ObjectMapper mapper;
+    @Autowired
     public TurnoService(ITurnoRepository turnoRepository, OdontologoService odontologoService, PacienteService pacienteService, ObjectMapper mapper) {
         this.turnoRepository = turnoRepository;
         this.odontologoService = odontologoService;

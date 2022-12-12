@@ -1,15 +1,15 @@
 package controller;
 
-import com.example.dh.ClinicaOdontologica.dto.TurnoDTO;
-import com.example.dh.ClinicaOdontologica.exception.BadRequestException;
-import com.example.dh.ClinicaOdontologica.exception.EntityNotFoundException;
-import com.example.dh.ClinicaOdontologica.model.Turno;
-import com.example.dh.ClinicaOdontologica.service.TurnoService;
+import dto.TurnoDTO;
+import exception.BadRequestException;
+import exception.EntityNotFoundException;
+import modelo.Turno;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import service.TurnoService;
 
 import java.util.Collection;
 
