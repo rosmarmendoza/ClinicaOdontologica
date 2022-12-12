@@ -1,9 +1,9 @@
-package controller;
+package controllers;
 
 import dto.OdontologoDTO;
 import exception.BadRequestException;
 import exception.EntityNotFoundException;
-import modelo.Odontologo;
+import models.Odontologo;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

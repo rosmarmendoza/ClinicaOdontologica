@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dto.OdontologoDTO;
 import exception.BadRequestException;
 import exception.EntityNotFoundException;
-import modelo.Odontologo;
+import models.Odontologo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package login;
 
-import modelo.AppUsuario;
-import modelo.AppUsuarioRoles;
+import models.AppUsuario;
+import models.AppUsuarioRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;

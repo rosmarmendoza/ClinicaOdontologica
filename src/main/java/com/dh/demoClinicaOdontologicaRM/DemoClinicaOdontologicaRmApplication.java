@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoClinicaOdontologicaRmApplication {
+public class ewDemoClinicaOdontologicaRmApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoClinicaOdontologicaRmApplication.class, args);

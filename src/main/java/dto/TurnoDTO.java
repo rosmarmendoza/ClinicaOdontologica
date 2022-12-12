@@ -2,8 +2,8 @@ package dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import modelo.Odontologo;
-import modelo.Paciente;
+import models.Odontologo;
+import models.Paciente;
 
 import java.time.LocalDateTime;
 

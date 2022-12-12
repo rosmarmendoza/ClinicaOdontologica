@@ -1,9 +1,9 @@
-package controller;
+package controllers;
 
 import dto.PacienteDTO;
 import exception.BadRequestException;
 import exception.EntityNotFoundException;
-import modelo.Paciente;
+import models.Paciente;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

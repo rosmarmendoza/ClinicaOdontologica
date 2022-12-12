@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dto.TurnoDTO;
 import exception.BadRequestException;
 import exception.EntityNotFoundException;
-import modelo.Turno;
+import models.Turno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repository.ITurnoRepository;
@@ -29,8 +29,7 @@ public class TurnoService {
         this.mapper = mapper;
     }
 
-    //métodos
-    //1. Guardar un turno en la base de datos.
+    //1. Guardar un turno en la BD.
     public Turno guardarTurno(Turno turno)throws BadRequestException, EntityNotFoundException{
         if(turno == null || turno.getPaciente()==null || turno.getOdontologo() == null) {
             throw new BadRequestException("Los datos ingresados para registrar el turno no son correctos o están incompletos. Debe incluir obligatoriamente: id del odontólogo y id del paciente.");
@@ -41,12 +40,12 @@ public class TurnoService {
         }
     }
 
-    //2. Registrar un turno en la base de datos.
+    //2. Registrar un turno en BD.
     public Turno registrarTurno(Turno turno) throws BadRequestException, EntityNotFoundException{
         return guardarTurno(turno);
     }
 
-    //3. Buscar un turno por id.
+    //3. Buscar un turno por id en BD.
     public TurnoDTO buscarTurnoPorId(Long id) throws EntityNotFoundException{
         Optional<Turno> turno = turnoRepository.findById(id);
         TurnoDTO turnoDTO = null;

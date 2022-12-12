@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dto.PacienteDTO;
 import exception.BadRequestException;
 import exception.EntityNotFoundException;
-import modelo.Paciente;
+import models.Paciente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repository.IPacienteRepository;
@@ -25,8 +25,6 @@ public class PacienteService {
         this.pacienteRepository = pacienteRepository;
         this.mapper = mapper;
     }
-
-    //métodos
     //1. Guardar un paciente en la base de datos.
     public Paciente guardarPaciente(Paciente paciente) throws BadRequestException {
         if(paciente == null || paciente.getNombre() == null || paciente.getApellido() == null  || paciente.getDomicilio()==null) {

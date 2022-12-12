@@ -1,7 +1,7 @@
 package dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import modelo.Domicilio;
+import models.Domicilio;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PacienteDTO {

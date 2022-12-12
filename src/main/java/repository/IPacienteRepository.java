@@ -1,6 +1,6 @@
 package repository;
 
-import modelo.Paciente;
+import models.Paciente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
