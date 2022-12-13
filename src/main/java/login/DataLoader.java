@@ -14,11 +14,11 @@ public class DataLoader implements ApplicationRunner {
 
     private IAppUsuarioRepository usuarioRepository;
 
-    @Autowired //la inyección de dependencias
     public DataLoader(IAppUsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
     }
 
+    @Autowired //la inyección de dependencias
 
     @Override
     public void run(ApplicationArguments args) throws Exception {

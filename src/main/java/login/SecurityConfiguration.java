@@ -14,7 +14,6 @@ import service.AppUsuarioService;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-
     private AppUsuarioService usuarioService;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired

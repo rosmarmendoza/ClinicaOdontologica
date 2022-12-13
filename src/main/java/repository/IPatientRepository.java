@@ -1,9 +1,10 @@
 package repository;
 
-import models.Turno;
+import models.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ITurnoRepository extends JpaRepository<Turno, Long> {
+public interface IPatientRepository extends JpaRepository<Patient, Long> {
+    Patient findByDni(String dni);
 }

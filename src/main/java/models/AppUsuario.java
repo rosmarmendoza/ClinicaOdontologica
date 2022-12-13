@@ -1,24 +1,46 @@
 package models;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 
 @Entity
-@Table(name="Usuarios")
+@Setter
+@Getter
+
 public class AppUsuario implements UserDetails {
+    @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
     @Id
-    @SequenceGenerator(name = "usuario_sequence",sequenceName = "usuario_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_sequence")
     private Long id;
     private String usuarioNombre;
     private String email;
     private String contrasenia;
     @Enumerated(EnumType.STRING)
     private AppUsuarioRoles usuarioRol;
+
+
+
+    public AppUsuario() {
+
+    }
+
+    public AppUsuario(Long id, String usuarioNombre, String email, String contrasenia, AppUsuarioRoles usuarioRol) {
+        this.id = id;
+        this.usuarioNombre = usuarioNombre;
+        this.email = email;
+        this.contrasenia = contrasenia;
+        this.usuarioRol = usuarioRol;
+    }
+
+    public AppUsuario(Serializable administrador, String s, String contrasenia2, AppUsuarioRoles admin) {
+    }
 
     //Sobrescritura de métodos de la interface UserDetails
     @Override
@@ -57,66 +79,5 @@ public class AppUsuario implements UserDetails {
         return true;
     }
 
-    //Constructor vacío
-    public AppUsuario() {
-    }
 
-    //Constructor sin id
-
-    public AppUsuario(String usuarioNombre, String email, String contrasenia, AppUsuarioRoles usuarioRol) {
-        this.usuarioNombre = usuarioNombre;
-        this.email = email;
-        this.contrasenia = contrasenia;
-        this.usuarioRol = usuarioRol;
-    }
-
-    //Constructor con id
-
-    public AppUsuario(Long id, String usuarioNombre, String email, String contrasenia, AppUsuarioRoles usuarioRol) {
-        this.id = id;
-        this.usuarioNombre = usuarioNombre;
-        this.email = email;
-        this.contrasenia = contrasenia;
-        this.usuarioRol = usuarioRol;
-    }
-
-
-    //Getters y Setters (accessor methods)
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getUsuarioNombre() {
-        return usuarioNombre;
-    }
-
-    public void setUsuarioNombre(String usuarioNombre) {
-        this.usuarioNombre = usuarioNombre;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getContrasenia() {
-        return contrasenia;
-    }
-
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
-    }
-
-    public AppUsuarioRoles getUsuarioRol() {
-        return usuarioRol;
-    }
-
-    public void setUsuarioRol(AppUsuarioRoles usuarioRol) {
-        this.usuarioRol = usuarioRol;
-    }
 }

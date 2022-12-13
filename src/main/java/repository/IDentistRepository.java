@@ -1,12 +1,13 @@
 package repository;
 
 
-import models.Odontologo;
+import models.Dentist;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface IOdontologoRepository extends JpaRepository<Odontologo, Long> {
+public interface IDentistRepository extends JpaRepository<Dentist, Long> {
+    Dentist findByCredential(String credential);
 
 }
